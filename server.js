@@ -13,7 +13,7 @@ mongoose.connect(
   process.env.MOGODB_URI || "mongodb://localhost/rand-appr",
   (err) => {
     if (err) throw err;
-    console.log("We've been connected to mongoDB");
+    console.log("Connected to mongoDB");
   }
 );
 

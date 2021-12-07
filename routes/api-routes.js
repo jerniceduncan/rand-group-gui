@@ -1,6 +1,10 @@
 const router = require("express").Router();
-const { addApprentice } = require("../controllers/apprenticeController");
+const {
+  addApprentice,
+  getLeads,
+} = require("../controllers/apprenticeController");
 
 router.post("/", addApprentice);
+router.get("/leads", getLeads);
 
 module.exports = router;
