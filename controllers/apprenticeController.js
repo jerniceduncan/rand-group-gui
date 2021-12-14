@@ -30,12 +30,7 @@ module.exports = {
   },
   getLeads: async (req, res) => {
     const leadsArr = [];
-    for (lead in leads) {
-      leadsArr.push({ name: lead, id: leads[lead] });
-      console.log("lead ===>", lead);
-      console.log("id ===>", leads[lead]);
-      console.log("--------------");
-    }
+    for (lead in leads) leadsArr.push({ name: lead, id: leads[lead] });
     res.json(leadsArr);
   },
 

@@ -1,13 +1,12 @@
 import React from "react";
-import TeacherSelect from "./../../components/TeacherSelect/TeacherSelect";
+import LeadSelect from "../../components/LeadSelect/LeadSelect";
 import "./checkGroups.css";
 
-const CheckGroups = ({ teachers }) => {
-  const names = ["nancy", "markus", "ben", "nancy"];
+const CheckGroups = ({ leads }) => {
   return (
     <div className="teacherSelectContainer">
-      {names.map((teacher, index) => (
-        <TeacherSelect key={index} name={teacher} />
+      {leads.map((teacher, index) => (
+        <LeadSelect key={index} name={teacher.name} />
       ))}
     </div>
   );

@@ -9,17 +9,15 @@ import axios from "axios";
 import CheckGroups from "./pages/CheckGroups/CheckGroups";
 
 function App() {
-  const [teachers, setTeachers] = useState([]);
+  const [leads, setLeads] = useState([]);
   useEffect(() => {
-    axios.get("/api/leads").then((res) => {
-      console.log(res.data);
-    });
+    axios.get("/api/leads").then((res) => setLeads(res.data));
   }, []);
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<CheckGroups />} />
+        <Route path="/" element={<CheckGroups leads={leads} />} />
         <Route path="/addapprentice" element={<AddApprentice />} />
       </Routes>
     </Router>
