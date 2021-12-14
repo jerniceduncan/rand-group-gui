@@ -7,8 +7,6 @@ for (lead in leads) leadCount++;
 
 module.exports = {
   addApprentice: async (req, res) => {
-    console.log("body ===>", req.body);
-
     try {
       const newAppr = new Apprentice({
         name: req.body.name,
@@ -28,6 +26,7 @@ module.exports = {
       res.status(500).json({ msg: err });
     }
   },
+
   getLeads: async (req, res) => {
     const leadsArr = [];
     for (lead in leads) leadsArr.push({ name: lead, id: leads[lead] });
@@ -35,11 +34,23 @@ module.exports = {
   },
 
   getRandomizedGroups: async (req, res) => {
-    try {
-      const allApprentices = await Apprentice.find({});
-      res.json(makeGroups(allApprentices, leadCount));
-    } catch (err) {
-      res.status(500).json({ msg: err });
-    }
+    const leadCount = req.body.length;
+    const leadIdArray = [];
+    let allLeadsApprentices = [];
+
+    req.body.forEach((lead) => {
+      const itemExists = leadIdArray.find(
+        (apprentice) => apprentice.id === lead.id
+      );
+      if (itemExists === undefined) leadIdArray.push(lead.id);
+    });
+
+    leadIdArray.forEach(async (leadID, index) => {
+      const apprenticesForLead = await Apprentice.find({ leadID: leadID });
+      allLeadsApprentices = [...allLeadsApprentices, ...apprenticesForLead];
+
+      if (index === leadIdArray.length - 1)
+        res.json(makeGroups(allLeadsApprentices, leadCount));
+    });
   },
 };

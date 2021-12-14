@@ -12,6 +12,6 @@ router.get("/", (req, res) => {
 router.post("/", addApprentice);
 router.get("/appr", getApprentices);
 router.get("/leads", getLeads);
-router.get("/groups", getRandomizedGroups);
+router.put("/groups", getRandomizedGroups);
 
 module.exports = router;
