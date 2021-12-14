@@ -35,6 +35,7 @@ module.exports = {
 
   getRandomizedGroups: async (req, res) => {
     const leadCount = req.body.length;
+    //const leadIdArray = [];
     const leadIdArray = [];
     let allLeadsApprentices = [];
 
