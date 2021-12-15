@@ -13,7 +13,7 @@ const makeGroups = (arr, lead) => {
 
   apprenticeArray.forEach((apprentice) => {
     groupsIterator === lead.length && (groupsIterator = 0);
-    groups[groupsIterator].push(apprentice);
+    groups[groupsIterator].push({ name: apprentice.name });
     groupsIterator++;
   });
 
