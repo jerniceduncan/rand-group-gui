@@ -1,7 +1,7 @@
 const shuffle = require("./shuffle");
 
-const makeGroups = (arr, groupLength) => {
-  if (isNaN(groupLength)) return "number must be passed as second argument";
+const makeGroups = (arr, lead) => {
+  if (isNaN(lead.length)) return "number must be passed as second argument";
 
   const groups = [];
   const apprenticeArray = shuffle([...arr]);
@@ -9,17 +9,17 @@ const makeGroups = (arr, groupLength) => {
 
   let groupsIterator = 0;
 
-  for (let i = 0; i < groupLength; i++) groups.push([]);
+  for (let i = 0; i < lead.length; i++) groups.push([]);
 
   apprenticeArray.forEach((apprentice) => {
-    groupsIterator === groupLength && (groupsIterator = 0);
+    groupsIterator === lead.length && (groupsIterator = 0);
     groups[groupsIterator].push(apprentice);
     groupsIterator++;
   });
 
   groups.map((group, index) => {
-    if (tableGroups[`Group ${index + 1}`] === undefined)
-      tableGroups[`Group ${index + 1}`] = group;
+    if (tableGroups[lead[index].name] === undefined)
+      tableGroups[lead[index].name] = group;
   });
 
   return tableGroups;

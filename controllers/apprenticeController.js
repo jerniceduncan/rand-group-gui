@@ -36,22 +36,14 @@ module.exports = {
   getRandomizedGroups: async (req, res) => {
     const leadCount = req.body.length;
     //const leadIdArray = [];
-    const leadIdArray = [];
     let allLeadsApprentices = [];
 
-    req.body.forEach((lead) => {
-      const itemExists = leadIdArray.find(
-        (apprentice) => apprentice.id === lead.id
-      );
-      if (itemExists === undefined) leadIdArray.push(lead.id);
-    });
-
-    leadIdArray.forEach(async (leadID, index) => {
-      const apprenticesForLead = await Apprentice.find({ leadID: leadID });
+    req.body.forEach(async (lead, index) => {
+      const apprenticesForLead = await Apprentice.find({ leadID: lead.id });
       allLeadsApprentices = [...allLeadsApprentices, ...apprenticesForLead];
 
-      if (index === leadIdArray.length - 1)
-        res.json(makeGroups(allLeadsApprentices, leadCount));
+      if (index === req.body.length - 1)
+        res.json(makeGroups(allLeadsApprentices, req.body));
     });
   },
 };
