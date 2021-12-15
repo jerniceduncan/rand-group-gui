@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import LeadSelect from "../../components/LeadSelect/LeadSelect";
-import axios from "axios";
+import React, { useState } from "react";
+
 import "./checkGroups.css";
 import RandomizedWithLead from "../../components/RandomizedWithLead/RandomizedWithLead";
 import LeadSelection from "../../components/LeadSelection/LeadSelection";

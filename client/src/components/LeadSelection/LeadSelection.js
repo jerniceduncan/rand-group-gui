@@ -23,7 +23,7 @@ const LeadSelection = (props) => {
 
     window.addEventListener("keyup", (e) => showLeads(e.key));
     return () => window.removeEventListener("keyup", (e) => showLeads(e.key));
-  }, [props.activeLeads]);
+  }, [props]);
   return (
     <>
       {props.leads.map((lead, index) => (

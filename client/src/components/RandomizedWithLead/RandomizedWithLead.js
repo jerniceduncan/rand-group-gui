@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import RandomGroup from "./../RandomGroup/RandomGroup";
 
 const RandomizedWithLead = (props) => {
-  const [groupData, setGroupData] = useState([]);
-
-  useEffect(() => {
+  const makeCard = () => {
     let arr = [];
-
     for (let lead in props.randomizedGroups) {
       arr.push(
         <RandomGroup
@@ -16,10 +13,11 @@ const RandomizedWithLead = (props) => {
         />
       );
     }
-    setGroupData(arr);
-  }, [props.randomizedGroups]);
 
-  return <div>{groupData}</div>;
+    return arr;
+  };
+
+  return <div>{makeCard()}</div>;
 };
 
 export default RandomizedWithLead;
