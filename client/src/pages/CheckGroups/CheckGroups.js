@@ -28,7 +28,7 @@ const CheckGroups = ({ leads, toggleLead, activeLeads }) => {
     <div className="teacherSelectContainer">
       <div
         style={{
-          width: "80%",
+          width: "90%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
